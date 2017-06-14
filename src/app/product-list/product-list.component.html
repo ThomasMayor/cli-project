@@ -1,0 +1,25 @@
+<h2>Product List</h2>
+<p>Filter by <input type="text" (change)="onFilterChange($event)"/></p>
+<p><input type="button" value="Show Image" (click)="onShowImageClick()" id="showImage"/></p>
+<table *ngIf="products && products.length">
+  <thead>
+      <tr>
+        <th>Image</th>
+        <th>Product</th>
+        <th>Code</th>
+        <th>Available</th>
+        <th>Price</th>
+        <th>5 star rating</th>
+      </tr>      
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td><img *ngIf="showImage" height="50" src="{{product.imageUrl}}"/></td>
+      <td>{{product.productName}}</td>
+      <td>{{product.productCode}}</td>
+      <td>{{product.releaseDate}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.starRating}}</td>
+    </tr>
+  </tbody>
+</table>
