@@ -6,7 +6,7 @@ export class ProductService {
       {
           "id": 1,
           "productName": "Leaf Rake",
-          "productCode": "GDN-0011",
+          "productCode": "gdn-0011",
           "releaseDate": "March 19, 2016",
           "description": "Leaf rake with 48-inch wooden handle.",
           "price": 19.95,
@@ -26,7 +26,7 @@ export class ProductService {
       {
           "id": 5,
           "productName": "Hammer",
-          "productCode": "TBX-0048",
+          "productCode": "tbx-0048",
           "releaseDate": "May 21, 2016",
           "description": "Curved claw steel hammer",
           "price": 8.9,
@@ -57,12 +57,13 @@ export class ProductService {
   constructor() { }
 
   getProducts(filter: string = '') {
-    if (filter)
+      console.log('getProducts ' + filter);
+    /*if (filter)
       return this.products.filter((item) => {
-        return item.description.indexOf(filter) > -1 ||
-               item.productName.indexOf(filter) > -1 ||
-               item.productCode.indexOf(filter) > -1;
-      });
+        return item.description.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
+               item.productName.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
+               item.productCode.toLowerCase().indexOf(filter.toLowerCase()) > -1;
+      });*/
     return this.products;
   }
 

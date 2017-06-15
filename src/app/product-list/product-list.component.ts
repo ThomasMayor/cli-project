@@ -9,23 +9,27 @@ import { ProductService } from '../product.service';
   providers: [ProductService]
 })
 export class ProductListComponent implements OnInit {
-  showImage = false;
-  products = [];
+  showImage:boolean = false;
+  products:any[] = [];
+  lastSearch:string = '';
   constructor(private productService:ProductService) { 
     this.products = this.productService.getProducts();
   }
 
   ngOnInit() {
+    console.log('ProductListComponent initialized');
   }
 
   onShowImageClick() {
-    console.log('onShowImageClick');
     this.showImage = !this.showImage;
   }
 
   onFilterChange(e) {
-    console.log('onFilterChange', e);
-    this.products = this.productService.getProducts(e.target.value);
+    //this.products = this.productService.getProducts(e.target.value);
+  }
+
+  onRatingChange(e) {
+    console.log('onRatingChange', e);
   }
 
 }

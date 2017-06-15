@@ -1,6 +1,9 @@
-<h2>Product List</h2>
-<p>Filter by <input type="text" (change)="onFilterChange($event)"/></p>
-<p><input type="button" value="Show Image" (click)="onShowImageClick()" id="showImage"/></p>
+<h4>Product List</h4>
+<p><strong>Last search :</strong>{{lastSearch | inverseChar | uppercase}}</p>
+<p>Filter by <input type="text" (change)="onFilterChange($event)" (keyup)="onFilterChange($event)" [(ngModel)]='lastSearch' /></p>
+<p>
+    <a class="waves-effect waves-light btn" (click)="onShowImageClick()">{{showImage ? 'Hide images' : 'Show images'}}</a>
+</p>
 <table *ngIf="products && products.length">
   <thead>
       <tr>
@@ -13,13 +16,13 @@
       </tr>      
   </thead>
   <tbody>
-    <tr *ngFor="let product of products">
-      <td><img *ngIf="showImage" height="50" src="{{product.imageUrl}}"/></td>
+    <tr *ngFor="let product of products | productFilter:lastSearch" style="height: 85px">
+      <td><img *ngIf="showImage" height="50" [src]="product.imageUrl"/></td>
       <td>{{product.productName}}</td>
-      <td>{{product.productCode}}</td>
+      <td>{{product.productCode | uppercase}}</td>
       <td>{{product.releaseDate}}</td>
-      <td>{{product.price}}</td>
-      <td>{{product.starRating}}</td>
+      <td>{{product.price | currency:'CHF':true:'1.2-2'}}</td>
+      <td><app-my-star-rating [rating]="product.starRating"></app-my-star-rating>  ({{product.starRating}})</td>
     </tr>
   </tbody>
 </table>
