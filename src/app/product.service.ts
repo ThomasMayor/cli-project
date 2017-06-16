@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { IProduct } from './product';
 
 @Injectable()
 export class ProductService {
-  private products = [
+  private products: IProduct[] = [
       {
           "id": 1,
           "productName": "Leaf Rake",
@@ -56,7 +57,7 @@ export class ProductService {
   ]
   constructor() { }
 
-  getProducts(filter: string = '') {
+  getProducts(filter: string = ''): IProduct[] {
       console.log('getProducts ' + filter);
     /*if (filter)
       return this.products.filter((item) => {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { ProductService } from '../product.service';
 
 
@@ -6,7 +7,7 @@ import { ProductService } from '../product.service';
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
-  providers: [ProductService]
+  providers: [ProductService, DecimalPipe]
 })
 export class ProductListComponent implements OnInit {
   showImage:boolean = false;
@@ -28,8 +29,9 @@ export class ProductListComponent implements OnInit {
     //this.products = this.productService.getProducts(e.target.value);
   }
 
-  onRatingChange(e) {
-    console.log('onRatingChange', e);
+  onRatingChange(product, rating) {
+    console.log('onRatingChange', product, rating);
+    product.starRating = rating;
   }
 
 }

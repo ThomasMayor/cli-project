@@ -21,8 +21,8 @@
       <td>{{product.productName}}</td>
       <td>{{product.productCode | uppercase}}</td>
       <td>{{product.releaseDate}}</td>
-      <td>{{product.price | currency:'CHF':true:'1.2-2'}}</td>
-      <td><app-my-star-rating [rating]="product.starRating"></app-my-star-rating>  ({{product.starRating}})</td>
+      <td>{{product.price | myCurrency:'CHF':true:'1.2-2'}}</td>
+      <td><app-my-star-rating [rating]="product.starRating" (ratingChange)="onRatingChange(product, $event)"></app-my-star-rating>  ({{product.starRating}})</td>
     </tr>
   </tbody>
 </table>

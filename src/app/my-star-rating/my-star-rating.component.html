@@ -22,28 +22,40 @@
 
     </defs>
 </svg>
-<svg style="width: 16px; height: 16px;">
-  <use xlink:href="#star-filled" *ngIf="rating>=1"/>
-  <use xlink:href="#star-half" *ngIf="rating >0 && rating < 1" />
-  <use xlink:href="#star-empty" *ngIf="rating==0"/>
-</svg>
-<svg style="width: 16px; height: 16px;">
-  <use xlink:href="#star-filled" *ngIf="rating>=2"/>
-  <use xlink:href="#star-half" *ngIf="rating >1 && rating < 2" />
-  <use xlink:href="#star-empty" *ngIf="rating<=1"/>
-</svg>
-<svg style="width: 16px; height: 16px;">
-  <use xlink:href="#star-filled" *ngIf="rating>=3"/>
-  <use xlink:href="#star-half" *ngIf="rating >2 && rating < 3" />
-  <use xlink:href="#star-empty" *ngIf="rating<=2"/>
-</svg>
-<svg style="width: 16px; height: 16px;">
-  <use xlink:href="#star-filled" *ngIf="rating>=4"/>
-  <use xlink:href="#star-half" *ngIf="rating >3 && rating < 4" />
-  <use xlink:href="#star-empty" *ngIf="rating<=3"/>
-</svg>
-<svg style="width: 16px; height: 16px;">
-  <use xlink:href="#star-filled" *ngIf="rating>=5"/>
-  <use xlink:href="#star-half" *ngIf="rating >4 && rating < 5" />
-  <use xlink:href="#star-empty" *ngIf="rating<=4"/>
-</svg>
+<span (mouseleave)="onMouseOut()" class="container">
+  <span (mouseenter)="onMouseOver(0)" (click)="onStarClick(0)" class="star">
+    <svg class="star">
+      <use xlink:href="#star-filled" *ngIf="rating >= 1 || hover >= 0" [ngClass]="{'hover' : hover >= 0}"/>
+      <use xlink:href="#star-half" *ngIf="rating > 0 && rating < 1 && hover < 0" />
+      <use xlink:href="#star-empty" *ngIf="rating == 0 && hover < 0"/>
+    </svg>
+  </span>
+  <span (mouseenter)="onMouseOver(1)" (click)="onStarClick(1)" class="star">
+    <svg class="star">
+      <use xlink:href="#star-filled" *ngIf="rating>=2 || hover >= 1" [ngClass]="{'hover' : hover >= 1}"/>
+      <use xlink:href="#star-half" *ngIf="rating >1 && rating < 2 && hover < 1" />
+      <use xlink:href="#star-empty" *ngIf="rating <= 1 && hover < 1"/>
+    </svg>
+  </span>
+  <span (mouseenter)="onMouseOver(2)" (click)="onStarClick(2)" class="star">
+    <svg class="star">
+      <use xlink:href="#star-filled" *ngIf="rating >= 3 || hover >= 2" [ngClass]="{'hover' : hover >= 2}"/>
+      <use xlink:href="#star-half" *ngIf="rating >2 && rating < 3 && hover < 2" />
+      <use xlink:href="#star-empty" *ngIf="rating <=2  && hover < 2"/>
+    </svg>
+  </span>
+  <span (mouseenter)="onMouseOver(3)" (click)="onStarClick(3)" class="star">
+    <svg class="star">
+      <use xlink:href="#star-filled" *ngIf="rating >= 4 || hover >= 3" [ngClass]="{'hover' : hover >= 3}"/>
+      <use xlink:href="#star-half" *ngIf="rating >3 && rating < 4 && hover < 3" />
+      <use xlink:href="#star-empty" *ngIf="rating<=3 && hover < 3"/>
+    </svg>
+  </span>
+  <span (mouseenter)="onMouseOver(4)" (click)="onStarClick(4)" class="star">
+    <svg class="star">
+      <use xlink:href="#star-filled" *ngIf="rating>=5 || hover >= 4" [ngClass]="{'hover' : hover >= 4}"/>
+      <use xlink:href="#star-half" *ngIf="rating >4 && rating < 5 && hover < 4" />
+      <use xlink:href="#star-empty" *ngIf="rating<=4 && hover < 4"/>
+    </svg>
+  </span>
+</span>
