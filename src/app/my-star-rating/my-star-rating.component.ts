@@ -8,17 +8,15 @@ import { Component, OnInit, Input, EventEmitter } from '@angular/core';
   outputs : ['ratingChange'],
 })
 export class MyStarRatingComponent implements OnInit {
-  public rating:number;
-  public hover:number;
+  public rating: number;
+  public hover: number;
   public ratingChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { 
-    console.log('MyStarRatingComponent ctor');
     this.hover = -1;
   }
 
   ngOnInit() {
-    console.log('MyStarRatingComponent', this.rating);
   }
 
   onMouseOver(index: number) {

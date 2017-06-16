@@ -14,11 +14,11 @@ export class ProductListComponent implements OnInit {
   products:any[] = [];
   lastSearch:string = '';
   constructor(private productService:ProductService) { 
-    this.products = this.productService.getProducts();
   }
 
   ngOnInit() {
     console.log('ProductListComponent initialized');
+    this.products = this.productService.getProducts();
   }
 
   onShowImageClick() {

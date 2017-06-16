@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from './product';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProductService {
@@ -11,7 +12,7 @@ export class ProductService {
           "releaseDate": "March 19, 2016",
           "description": "Leaf rake with 48-inch wooden handle.",
           "price": 19.95,
-          "starRating": 3.2,
+          "starRating": 3.4,
           "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
       },
       {
@@ -21,7 +22,7 @@ export class ProductService {
           "releaseDate": "March 18, 2016",
           "description": "15 gallon capacity rolling garden cart",
           "price": 32.99,
-          "starRating": 4.2,
+          "starRating": 5,
           "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
       },
       {
