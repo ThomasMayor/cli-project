@@ -16,17 +16,20 @@ export class ProductListComponent implements OnInit {
   products:IProduct[] = [];
   lastSearch:string = '';
 
-  constructor(private productService:ProductService) { 
+  constructor(private productService:ProductService) {
   }
 
-  ngOnInit() { 
-    this.products = this.productService.getProducts().map(
+  ngOnInit() {
+    this.productService.getProducts().map(
       products => {
          return this.lastSearch.length ? (products.filter(product => product.description.toLowerCase().indexOf(this.lastSearch.toLowerCase()) > -1 ||
                                                           product.productName.toLowerCase().indexOf(this.lastSearch.toLowerCase()) > -1 ||
-                                                          product.productCode.toLowerCase().indexOf(this.lastSearch.toLowerCase()) > -1)) 
+                                                          product.productCode.toLowerCase().indexOf(this.lastSearch.toLowerCase()) > -1))
                                        : products
-      } 
+      }
+    ).subscribe(
+      products => this.products = products,
+      error => console.log(error)
     );
     /*this.productService.getProducts().subscribe(
       products => this.products = products,
