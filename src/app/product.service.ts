@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/mergeMap';
 
 import { IProduct } from './product';
 
@@ -19,14 +21,14 @@ export class ProductService {
   }
 
 
-  constructor(private http: Http) { 
+  constructor(private http: Http) {
     this.products$ = new BehaviorSubject<IProduct[]>([]);
   }
 
   getProducts(filter: string = ''): Observable<IProduct[]> {
     this.http.get(this.productUrl)
              .map((response: Response) =>  <IProduct[]>response.json() )
-             .do(data => console.log(data))
+             .do(data => console.log('getProducts',data))
              .take(1)
              .subscribe(
                products => this.storeUpdateAll(products),
@@ -34,13 +36,13 @@ export class ProductService {
              );
     return this.products$.asObservable();
              /*.catch((err) => { return Observable.throw('backend server error', err);})*/
-      
+
   }
 
   getProduct(id: number): Observable<IProduct> {
     this.http.get(this.productUrl + '/' + id)
              .map((response: Response) => { return <IProduct>response.json(); })
-             .do(data => console.log(data))
+             .do(data => console.log('getProduct', data))
              .take(1)
              .subscribe(
                product => this.storeUpdateOne(product),
