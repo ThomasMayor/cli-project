@@ -1,13 +1,13 @@
-.hover {
-    fill: gold;
+.star.hover {
+    color: gold;
 }
 .star {
     display: inline-block;
     width: 16px;
     height: 16px;
-    fill: #0277bd;
+    color: #0277bd;
 }
 .container {
-    padding: 2px; 
+    padding: 2px;
     cursor: pointer
 }

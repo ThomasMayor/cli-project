@@ -12,7 +12,7 @@ export class MyStarRatingComponent implements OnInit {
   public hover: number;
   public ratingChange: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { 
+  constructor() {
     this.hover = -1;
   }
 
@@ -29,6 +29,22 @@ export class MyStarRatingComponent implements OnInit {
 
   onStarClick(index: number) {
     this.ratingChange.emit(index + 1);
+  }
+
+  isFullStar(index: number): boolean {
+    return this.isStarHover(index) || this.rating >= index + 1;
+  }
+
+  isHalfStar(index: number): boolean {
+    return this.rating > index && this.rating < index + 1 && !this.isStarHover(index);
+  }
+
+  isEmptyStar(index: number): boolean {
+    return this.rating <= index && !this.isStarHover(index);
+  }
+
+  isStarHover(index: number): boolean {
+    return this.hover >= index;
   }
 
 }

@@ -1,9 +1,14 @@
 <!--The whole content below can be removed with the new code.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{title}}!!
+    {{title}}
+    <img height="87" width="100" src="http://nomades.ch/wp-content/themes/theme_nomades/images/logo-nomades.png" />
   </h1>
-  <img height="87" width="100" src="http://nomades.ch/wp-content/themes/theme_nomades/images/logo-nomades.png" />
+  <nav>
+    <a routerLink="/welcome" routerLinkActive="active" class="waves-effect waves-light btn teal darken-2">Home</a>
+    <a routerLink="/products" routerLinkActive="active" class="waves-effect waves-light btn teal darken-2">Products</a>
+  </nav>
 </div>
-<app-product-list></app-product-list>
-
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

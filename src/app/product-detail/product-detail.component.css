@@ -1,0 +1,29 @@
+.big {
+  font-size: 120%;
+  font-weight: lighter;
+}
+img {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+h4 {
+    color: #00796b;
+    font-weight: lighter;
+    padding: 20px;
+    margin: 0px;
+}
+.error {
+  color: tomato;
+  font-size: 110%;
+  text-align: center;
+  padding: 50px;
+  margin-top: 50px;
+  border: 1px solid tomato;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-image {
+  padding: 20px;
+}

@@ -13,16 +13,18 @@
         <th>Available</th>
         <th>Price</th>
         <th>5 star rating</th>
+        <th>Details</th>
       </tr>      
-  </thead>
+  </thead> 
   <tbody>
     <tr *ngFor="let product of products | productFilter:lastSearch" style="height: 85px">
       <td><img *ngIf="showImage" height="50" [src]="product.imageUrl"/></td>
-      <td>{{product.productName}}</td>
+      <td><a routerLink="/products/{{product.id}}">{{product.productName}}</a></td>
       <td>{{product.productCode | uppercase}}</td>
       <td>{{product.releaseDate}}</td>
       <td>{{product.price | myCurrency:'CHF':true:'1.2-2'}}</td>
       <td><app-my-star-rating [rating]="product.starRating" (ratingChange)="onRatingChange(product, $event)"></app-my-star-rating>  ({{product.starRating}})</td>
+      <td><a class="waves-effect waves-light btn-flat" routerLink="/products/{{product.id}}">Show</a></td>
     </tr>
   </tbody>
 </table>

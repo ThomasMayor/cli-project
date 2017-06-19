@@ -1,6 +1,9 @@
 h4 {
-    background-color: #00796b;
-    color: #fff;
+    color: #00796b;
     font-weight: lighter;
     padding: 20px;
+    margin: 0px;
+}
+th:first-of-type {
+  width: 100px;
 }
