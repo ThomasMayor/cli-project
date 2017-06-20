@@ -17,6 +17,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 import { APP_ROUTES } from './app.routes';
+import { ProductService } from './product.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { APP_ROUTES } from './app.routes';
     HttpModule,
     RouterModule.forRoot(APP_ROUTES),
   ],
-  providers: [DecimalPipe],
+  providers: [DecimalPipe, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

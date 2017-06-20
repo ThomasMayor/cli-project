@@ -9,8 +9,7 @@ import 'rxjs/add/operator/filter';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css'],
-  providers: [ProductService]
+  styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
   public showImage:boolean = false;
@@ -40,7 +39,8 @@ export class ProductListComponent implements OnInit {
   }
 
   onRatingChange(product, rating) {
-    //product.starRating = rating;
+    let newProduct = Object.assign({}, product, {starRating: rating});
+    this.productService.putProduct(newProduct).subscribe(product => console.log('Product saved'));
   }
 
 }

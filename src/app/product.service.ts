@@ -53,6 +53,21 @@ export class ProductService {
                          .filter(product => product.id === id);
   }
 
+  putProduct(myproduct: IProduct): Observable<IProduct>  {
+    this.http.put(this.productUrl + '/' + myproduct.id, myproduct)
+             .map((response : Response) => <IProduct>response.json())
+             .do(data => console.log('puProduct', data))
+             .take(1)
+             .subscribe(
+               product => this.storeUpdateOne(product),
+               error => console.log(error)
+             );
+    return this.products$.asObservable()
+                         .flatMap(products => products)
+                         .filter(product => product.id === myproduct.id);
+    
+  }
+
   private storeUpdateAll(products: IProduct[]) {
     this.dataStore.products = products;
     this.next();

@@ -11,7 +11,7 @@ import { ProductService } from '../product.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
   inputs : ['product'],
-  providers: [ProductService, Location]
+  providers: [Location]
 })
 export class ProductDetailComponent implements OnInit {
 
@@ -33,7 +33,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onRatingChange(product, rating) {
-    product.starRating = rating;
+    let newProduct = Object.assign({}, product, {starRating: rating});
+    this.productService.putProduct(newProduct).subscribe(product => console.log('Product saved'));
   }
 
 }
